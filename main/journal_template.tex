@@ -1,0 +1,57 @@
+\documentclass[12pt]{book}
+
+\usepackage{../main/journal_template_style}
+\usepackage{chapterbib}
+
+\title{Research Journal}
+
+\begin{document}
+\renewcommand{\printbib}[1]{}% This removes all subfile bibliographies
+
+\maketitle
+\tableofcontents
+
+\chapter{Introduction}
+This is a template for a mathematics research journal.  It uses the \verb|subfiles| package to split the document up into chapters/topic areas, which allows you to work on each `project' separately without needing to re-compile the entire document. 
+
+\paragraph{Folder Structure}
+The folder structure is important.  I keep each project in its own folder: 
+
+\dirtree{%
+.1 /.
+.2 main.
+.3 journal.tex.
+.3 journal\_style.sty.
+.3 journal\_bib.bib.
+.3 figures.
+.4 fig1.pdf.
+.2 project\_1.
+.3 subfile\_1.tex.
+.3 figures.
+.4 project1fig1.pdf.
+.2 project\_2.
+.3 subfile\_2.tex.
+.3 figures. 
+.4 project2fig2.pdf.
+}    
+
+\paragraph{Subfile Document Structure}Each project file has the following document class: 
+\begin{verbatim}
+\documentclass[../main/journal.tex]{subfiles}
+\end{verbatim}  Otherwise, when editing a subfile, there is nothing different - work on it like a regular document and compile it separately using your standard compilation workflow (there are no special tricks to get it to compile!)
+
+
+\chapter{Math}
+\subfile{../math/math.tex}
+
+\chapter{Physics}
+\subfile{../physics/physics.tex}
+
+
+
+\bibliographystyle{plain}
+\bibliography{../main/journal_template_bib}
+
+
+
+\end{document}
